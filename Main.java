@@ -12,8 +12,18 @@ public class Main{
         else return checkSmallestValue(numbers, index + 1, numbers[index]);
     }   
 
+    private static Integer[] genRandomNumbers(Integer count, Integer... numbers){
+        if(count == 0) return (Integer[]) numbers;
+        Integer randomNumber = (int) Math.round(Math.random()*100);
+        numbers[count-1] = randomNumber;
+        return genRandomNumbers(count-1, numbers);
+    }
+    private static Integer[] genRandomNumbers(Integer count){
+        return genRandomNumbers(count, new Integer[count]);
+    }
     public static void main(String[] args) 
     {
-        System.out.println(getSnmallestValue(643,5,6,6,7,101,5015,5325));
+        Integer[] randomNumbers = genRandomNumbers(20);
+        System.out.println(getSnmallestValue(randomNumbers));
     }
 }
