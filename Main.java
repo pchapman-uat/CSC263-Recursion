@@ -1,5 +1,25 @@
+import java.util.Scanner;
 
 public class Main{
+    static Scanner scanner = new Scanner(System.in);
+
+    private static Integer intInput(String msg){
+        System.out.println(msg);
+
+        try {
+            return scanner.nextInt();
+        } catch (Exception e) {
+            scanner.nextLine();
+            return intInput(msg);
+        }
+    }
+    private static String input(String msg){
+        System.out.println(msg);
+        String response = scanner.nextLine();
+        return response;
+    }
+
+
     private static Integer getSnmallestValue(Integer ...numbers){
         return checkSmallestValue(numbers, null, null);
     }
@@ -23,7 +43,9 @@ public class Main{
     }
     public static void main(String[] args) 
     {
-        Integer[] randomNumbers = genRandomNumbers(20);
-        System.out.println(getSnmallestValue(randomNumbers));
+
+        Integer response = intInput("Please enter the total numbers to generate");
+        Integer[] randomNumbers = genRandomNumbers(response);
+        System.out.println("The Smallest Number is:"+getSnmallestValue(randomNumbers));
     }
 }
