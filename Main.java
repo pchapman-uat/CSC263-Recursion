@@ -14,6 +14,7 @@ public class Main{
         }
     }
     private static String input(String msg){
+        scanner.nextLine();
         System.out.println(msg);
         String response = scanner.nextLine();
         return response;
@@ -41,11 +42,23 @@ public class Main{
     private static Integer[] genRandomNumbers(Integer count){
         return genRandomNumbers(count, new Integer[count]);
     }
+    private static String printNumbers(Integer ...numbers){
+        return printNumbers(0,"", numbers);
+    }
+    private static String printNumbers(Integer index, String msg, Integer ...numbers){
+        if(numbers.length == index) return msg;
+        return printNumbers(index+1, msg+", "+numbers[index], numbers);
+    }
     public static void main(String[] args) 
     {
 
         Integer response = intInput("Please enter the total numbers to generate");
         Integer[] randomNumbers = genRandomNumbers(response);
         System.out.println("The Smallest Number is:"+getSnmallestValue(randomNumbers));
+        
+        String resultsResponce = input("Would you like to see the numbers?");
+        if(resultsResponce.toLowerCase().equals("y")){
+            System.out.println(printNumbers(randomNumbers));
+        }
     }
 }
