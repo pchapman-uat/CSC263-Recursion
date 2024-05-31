@@ -7,8 +7,6 @@ public class Main{
 
     // An integer input function
     private static Integer intInput(String msg){
-        // Advance the scanner to the next line
-        scanner.nextLine();
         // Print the message
         System.out.println(msg);
 
@@ -77,8 +75,10 @@ public class Main{
     // Recursive function to print the numbers
     private static String printNumbers(Integer index, String msg, Integer ...numbers){
         // If the index is out of bounds, return the message
+        
         if(numbers.length == index+1) return msg;
         // If the index is not out of bounds, return the message with the current number
+        if(index == 0) return printNumbers(index+1, numbers[index].toString(),numbers);
         return printNumbers(index+1, msg+", "+numbers[index], numbers);
     }
     public static void main(String[] args) 
