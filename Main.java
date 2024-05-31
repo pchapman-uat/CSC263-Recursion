@@ -44,9 +44,9 @@ public class Main{
         // If the index is null, set it to 0
         if(index == null) index = 0;
         // If the smallest is null, set it to the first number
-        if(smallest == null) return checkSmallestValue(numbers, index + 1, numbers[index]);
+        if(smallest == null) return checkSmallestValue(numbers, index, numbers[index]);
         // If the index is out of bounds, return the smallest value
-        if(numbers.length == index + 1) return smallest;
+        if(numbers.length == index + 2) return smallest;
         // If the current number is smaller than the smallest, return the current number
         if(smallest < numbers[index]) return checkSmallestValue(numbers, index + 1, smallest);
         // If the current number is not smaller than the smallest, return the smallest value
@@ -76,7 +76,7 @@ public class Main{
     private static String printNumbers(Integer index, String msg, Integer ...numbers){
         // If the index is out of bounds, return the message
         
-        if(numbers.length == index+1) return msg;
+        if(numbers.length == index+1) return msg+", "+numbers[index].toString();
         // If the index is not out of bounds, return the message with the current number
         if(index == 0) return printNumbers(index+1, numbers[index].toString(),numbers);
         return printNumbers(index+1, msg+", "+numbers[index], numbers);
